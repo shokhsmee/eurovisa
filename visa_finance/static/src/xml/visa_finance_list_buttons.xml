@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<t t-name="visa_finance.VisaFinanceListButtonsRoot" owl="1">
+    <!-- RIGHT side (same row as search) -->
+    <t t-set-slot="controlPanelActions">
+        <div class="d-flex align-items-center gap-1 ms-2">
+            <button class="btn btn-outline-success btn-sm text-nowrap" t-on-click="onClickIncome">
+                Kirim: <t t-esc="state.income"/>
+            </button>
+            <button class="btn btn-outline-danger btn-sm text-nowrap" t-on-click="onClickExpense">
+                Chiqim: <t t-esc="state.expense"/>
+            </button>
+            <button class="btn btn-outline-primary btn-sm text-nowrap" t-on-click="onClickProfit">
+                Foyda: <t t-esc="state.profit"/>
+            </button>
+            <button class="btn btn-outline-danger btn-sm text-nowrap" t-on-click="onClickDebt">
+                Qarz: <t t-esc="state.debt"/>
+            </button>
+            <button class="btn btn-outline-secondary btn-sm text-nowrap" t-on-click="onClickCount">
+                Visa soni: <t t-esc="state.count"/>
+            </button>
+        </div>
+    </t>
+</t>

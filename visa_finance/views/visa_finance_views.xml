@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- LIST view (Odoo18: list) -->
+    <record id="visa_finance_view_list" model="ir.ui.view">
+        <field name="name">visa.finance.list</field>
+        <field name="model">visa.finance</field>
+        <field name="arch" type="xml">
+            <list js_class="visa_finance_list">
+                <field name="date"/>
+                <field name="crm_lead_id"/>
+                <field name="service_number"/>
+                <field name="kirim_chiqim"
+                    widget="badge"
+                    decoration-success="kirim_chiqim == 'kirim'"
+                    decoration-danger="kirim_chiqim == 'chiqim'"/>
+                <field name="payment_type_id"/>
+                <field name="payment_method_id"/>
+                <field name="amount"/>
+                <field name="note"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- FORM view -->
+    <record id="visa_finance_view_form" model="ir.ui.view">
+        <field name="name">visa.finance.form</field>
+        <field name="model">visa.finance</field>
+        <field name="arch" type="xml">
+            <form string="Finance">
+                <sheet>
+
+                    <group>
+                        <!-- LEFT COLUMN -->
+                        <group>
+                            <field name="date"/>
+                            <field name="crm_lead_id" required="1"/>
+                            <field name="kirim_chiqim" widget="radio"/>
+                            <field name="amount"/>
+                        </group>
+
+                        <!-- RIGHT COLUMN -->
+                        <group>
+                            <field name="payment_type_id"/>
+                            <field name="payment_method_id"/>
+                            <field name="note"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Biriktirish (Check)">
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="visa_finance_action" model="ir.actions.act_window">
+        <field name="name">Finance</field>
+        <field name="res_model">visa.finance</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- PAYMENT TYPE -->
+    <record id="visa_finance_payment_type_list" model="ir.ui.view">
+        <field name="name">visa.finance.payment.type.list</field>
+        <field name="model">visa.finance.payment.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="visa_finance_payment_type_form" model="ir.ui.view">
+        <field name="name">visa.finance.payment.type.form</field>
+        <field name="model">visa.finance.payment.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="visa_finance_payment_type_action" model="ir.actions.act_window">
+        <field name="name">To'lov turlari</field>
+        <field name="res_model">visa.finance.payment.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- PAYMENT METHOD -->
+    <record id="visa_finance_payment_method_list" model="ir.ui.view">
+        <field name="name">visa.finance.payment.method.list</field>
+        <field name="model">visa.finance.payment.method</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="visa_finance_payment_method_form" model="ir.ui.view">
+        <field name="name">visa.finance.payment.method.form</field>
+        <field name="model">visa.finance.payment.method</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="visa_finance_payment_method_action" model="ir.actions.act_window">
+        <field name="name">To'lov metodlari</field>
+        <field name="res_model">visa.finance.payment.method</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

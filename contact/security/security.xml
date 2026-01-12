@@ -1,0 +1,6 @@
+<odoo>
+    <record id="model_res_partner_document" model="ir.model">
+        <field name="name">Partner Document</field>
+        <field name="model">res.partner.document</field>
+    </record>
+</odoo>

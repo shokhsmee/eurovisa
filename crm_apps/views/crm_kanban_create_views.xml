@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="crm_lead_quick_create_view_office" model="ir.ui.view">
+    <field name="name">crm.lead.quick.create.office</field>
+    <field name="model">crm.lead</field>
+    <field name="arch" type="xml">
+      <form string="Yangi murojat">
+        <group>
+          <field name="name" string="Murojatchi" placeholder="e.g. Murojatchi"/>
+          <field name="partner_id" context="{'default_is_company': False}" options="{'no_open': True}"/>
+          <field name="phone"/>
+          <field name="visa_type" string="Visa Turi" placeholder="Visa turini tanlang..."/>
+          <field name="visa_country_id" placeholder="Davlatni tanlang..."/>
+          <field name="qachonga_kerak"/>
+          <field name="expected_revenue"/>
+        </group>
+      </form>
+    </field>
+  </record>
+</odoo>

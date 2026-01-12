@@ -1,0 +1,94 @@
+<odoo>
+    <record id="view_partner_form_custom_company" model="ir.ui.view">
+        <field name="name">res.partner.form.custom.company</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml"> <!-- Hide company/individual selector -->
+            <xpath expr="//field[@name='company_type']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='is_company']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> <!-- Hide original
+            address fields (Odoo standard ones) -->
+            <xpath expr="//field[@name='street']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='street2']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='city']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='zip']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='country_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> <!-- Hide VAT field -->
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> 
+            <xpath expr="//field[@name='street']/ancestor::group[1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- Hide Sales & Purchase tab -->
+            <xpath expr="//sheet/notebook/page[@name='sales_purchases']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+
+
+            <xpath expr="//sheet//group" position="inside">
+                <group>
+                    <field name="date_of_birth" string="Tug'ilgan kun" />
+                    <field name="job_type" string="Kasbi" />
+                </group>
+            </xpath> 
+
+
+            <xpath expr="//sheet//group" position="inside">
+                <group string="Address">
+                    <field name="country_id" string="Davlat" />
+                    <field name="viloyat_id" string="Viloyat"
+                        domain="[('country_id','=',country_id)]" />
+                    <field name="tuman" string="Tuman" />
+                    <field name="uy_manzili" string="Uy manzili" />
+                </group>
+            </xpath>
+
+            <xpath expr="//field[@name='website']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> 
+
+            <xpath expr="//field[@name='category_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath> 
+
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Xujjatlar">
+                    <field name="document_ids">
+                        <list editable="bottom">
+                            <field name="type_id" string="Turi"/>
+                            <field name="file" filename="file_name"/>
+                            <field name="status"/>
+                            <field name="note" string="Izoh"/>
+                        </list>
+                        <form>
+                            <group>
+                                <field name="type_id"/>
+                                <field name="file" filename="file_name"/>
+                                <field name="status"/>
+                                <field name="note"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

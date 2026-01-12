@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record id="crm_lead_view_form_inherit_finance" model="ir.ui.view">
+    <field name="name">crm.lead.form.inherit.finance</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+    <field name="arch" type="xml">
+
+      <!-- Ish summasi yoniga Joriy miqdor -->
+      <xpath expr="//field[@name='expected_revenue']/ancestor::div[contains(@class,'d-flex')][1]" position="inside">
+        <span class="oe_grey p-2">|</span>
+        <span class="oe_grey p-2">Joriy miqdor:</span>
+        <field name="finance_balance"
+               widget="monetary"
+               options="{'currency_field': 'company_currency'}"
+               readonly="1"
+               class="o_input_13ch"/>
+      </xpath>
+
+      <xpath expr="//field[@name='expected_revenue']/ancestor::div[contains(@class,'d-flex')][1]" position="inside">
+        <span class="oe_grey p-2">|</span>
+        <span class="oe_grey p-2">Qolgan miqdor:</span>
+        <field name="remaining_amount"
+               widget="monetary"
+               options="{'currency_field': 'company_currency'}"
+               readonly="1"
+               class="o_input_13ch"/>
+      </xpath>
+
+      <xpath expr="//div[@name='button_box']" position="inside">
+
+          <button name="action_open_finance"
+                  type="object"
+                  class="oe_stat_button"
+                  icon="fa-money"
+                  invisible="finance_balance == 0">
+
+              <field name="finance_balance" widget="statinfo"/>
+
+          </button>
+
+      </xpath>
+
+
+      <!-- Finance tab -->
+      <xpath expr="//notebook" position="inside">
+        <page string="Finance" name="finance_page">
+          <field name="finance_ids" context="{'default_crm_lead_id': id}"/>
+        </page>
+      </xpath>
+
+    </field>
+  </record>
+
+</odoo>

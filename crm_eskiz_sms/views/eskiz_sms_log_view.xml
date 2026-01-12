@@ -1,0 +1,46 @@
+<odoo>
+  <record id="view_eskiz_sms_log_tree" model="ir.ui.view">
+    <field name="name">crm_eskiz_sms.log.tree</field>
+    <field name="model">crm_eskiz_sms.log</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="create_date"/>
+        <field name="lead_id"/>
+        <field name="phone"/>
+        <field name="from_whom"/>
+        <field name="message"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_eskiz_sms_log_form" model="ir.ui.view">
+    <field name="name">crm_eskiz_sms.log.form</field>
+    <field name="model">crm_eskiz_sms.log</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="create_date" readonly="1"/>
+            <field name="lead_id"/>
+            <field name="phone"/>
+            <field name="from_whom"/>
+            <field name="callback_url"/>
+          </group>
+          <group>
+            <field name="message"/>
+            <field name="response"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_eskiz_sms_log" model="ir.actions.act_window">
+    <field name="name">Eskiz SMS Logs</field>
+    <field name="res_model">crm_eskiz_sms.log</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="menu_eskiz_sms_root" name="Eskiz SMS" parent="crm.crm_menu_root" sequence="80"/>
+  <menuitem id="menu_eskiz_sms_logs" name="SMS Logs" parent="menu_eskiz_sms_root" action="action_eskiz_sms_log"/>
+</odoo>

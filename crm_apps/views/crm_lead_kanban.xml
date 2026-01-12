@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="crm_lead_view_form_inherit_mijoz" model="ir.ui.view">
+    <field name="name">crm.lead.form.inherit.mijoz</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+    <field name="arch" type="xml">
+
+      <!-- Rename Expected Revenue -->
+      <xpath expr="//field[@name='expected_revenue']" position="attributes">
+        <attribute name="string">Ish summasi</attribute>
+      </xpath>
+
+      <!-- Hide probability field itself -->
+      <xpath expr="//field[@name='probability']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <!-- Hide the smallest container that wraps probability -->
+      <xpath expr="//field[@name='probability']/ancestor::div[1]" position="attributes">
+          <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <!-- Hide the next parent too (usually contains the 'at' text) -->
+      <xpath expr="//field[@name='probability']/ancestor::div[2]" position="attributes">
+          <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//span[contains(@class,'oe_grey') and contains(@class,'p-2') and @groups='!crm.group_use_recurring_revenues' and normalize-space()='at']"
+          position="attributes">
+          <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <!-- Optional label hide (if it exists) -->
+      <xpath expr="//label[@for='probability']" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//header//button[@name='action_set_won' or @name='action_set_won_rainbowman']" position="attributes">
+        <attribute name="string">Visa Olindi</attribute>
+      </xpath>
+
+      <xpath expr="//header//button[@name='199']" position="attributes">
+        <attribute name="string">Yuqotildi</attribute>
+        <attribute name="class">btn-danger</attribute>
+      </xpath>
+      
+
+      <xpath expr="//sheet/group" position="inside">
+        <group string="Visa Ma'lumotlari">
+            <field name="service_number" readonly="1"/>
+            <field name="visa_type"/>
+            <field name="visa_country_id"/>
+            <field name="qachonga_kerak" string="Visa Sanasi"/>
+            <field name="firma_id" string="Firma nomi"/>
+            <field name="queue_date"/>
+        </group>
+      </xpath>
+
+      <xpath expr="//notebook" position="inside">
+        <page string="Mijoz ma'lumotlari" name="mijoz_malumotlari" invisible="not partner_id">
+          <group>
+            <group string="Shaxsiy">
+              <field name="partner_id" context="{'show_parent_name': 0}"/>
+              <field name="partner_job_type" readonly="1"/>
+              <field name="partner_date_of_birth" readonly="1"/>
+            </group>
+            <group string="Manzil">
+              <field name="partner_viloyat_id" readonly="1"/>
+              <field name="partner_tuman" readonly="1"/>
+              <field name="partner_uy_manzili" readonly="1"/>
+            </group>
+          </group>
+        </page>
+
+        <page string="Xujjatlar" name="documents">
+            <field name="document_ids">
+                <list editable="bottom">
+                    <field name="type_id"/>
+                    <!-- <field name="visa_type"/> -->
+                    <field name="file" filename="file_name"/>
+                    <field name="file_name" invisible="1"/>
+                    <field name="status"
+                          widget="badge"
+                          decoration-success="status == 'uploaded'"
+                          decoration-danger="status == 'none'"/>
+                    <field name="note"/>
+                </list>
+            </field>
+        </page>
+
+      </xpath>
+
+    </field>
+  </record>
+
+</odoo>

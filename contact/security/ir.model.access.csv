@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_partner_document_user,partner.document.user,model_res_partner_document,base.group_user,1,1,1,1
+access_partner_document_type_admin,partner.document.type.admin,model_res_partner_document_type,base.group_system,1,1,1,1
+access_visa_country_user,visa.country.user,model_visa_country,base.group_user,1,1,1,1

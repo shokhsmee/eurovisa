@@ -1,0 +1,50 @@
+<odoo>
+    <record id="view_partner_document_list" model="ir.ui.view">
+        <field name="name">res.partner.document.list</field>
+        <field name="model">res.partner.document</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="partner_id"/>
+                <field name="type_id"
+                        string="Turi"
+                        domain="[('active','=',True),'|',('country_ids','=',False),('country_ids','in',parent.davlat_id)]"/>
+                <field name="file" filename="file_name"/>
+                <field name="status"/>
+                <field name="note"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_partner_document_type_list" model="ir.ui.view">
+        <field name="name">res.partner.document.type.list</field>
+        <field name="model">res.partner.document.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="country_ids" widget="many2many_tags"/>
+                <field name="code"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_partner_document_type_form" model="ir.ui.view">
+        <field name="name">res.partner.document.type.form</field>
+        <field name="model">res.partner.document.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="country_ids" widget="many2many_tags"/>
+                        <field name="code"/>
+                        <field name="sequence"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+</odoo>

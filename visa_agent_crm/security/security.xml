@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="group_visa_agent" model="res.groups">
+    <field name="name">Visa Agent</field>
+    <field name="category_id" ref="base.module_category_sales_crm"/>
+  </record>
+</odoo>

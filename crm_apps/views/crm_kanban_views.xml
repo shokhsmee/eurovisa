@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="crm_lead_view_kanban_card_visa" model="ir.ui.view">
+    <field name="name">crm.lead.kanban.card.visa</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_case_kanban_view_leads" />
+    <field name="priority">200</field>
+    <field name="arch" type="xml"> <!-- Load extra fields for the kanban record -->
+
+      <xpath expr="//kanban" position="attributes">
+        <attribute name="class" add="o_kanban_crm_hide_extras"/>
+        <attribute name="quick_create">1</attribute>
+        <attribute name="quick_create_view">crm_apps.crm_lead_quick_create_view_office</attribute>
+      </xpath>
+
+
+      <xpath expr="//kanban" position="inside">
+        <field name="service_number" />
+        <field name="partner_id" />
+        <field name="phone" />
+        <field name="visa_country_id" />
+        <field name="doc_done_count" />
+        <field name="doc_total_count" />
+        <field name="qachonga_kerak" />
+        <field name="finance_balance" />
+        <field name="viza_summasi" />
+        <field name="expected_revenue"/>
+        <field name="visa_agent_id"/>
+        <field name="create_date"/>
+
+        <field name="my_activity_date_deadline"/>
+        <field name="activity_ids"/>
+        <field name="activity_state"/>
+        <field name="activity_type_id"/>
+        <field name="activity_user_id"/>
+        <field name="activity_date_deadline"/>
+
+
+        <style> .visa-card div { line-height: 1.4; margin: 2px 0; font-size: 14px; } .visa-card
+          .name { font-weight: 700; font-size: 16px; } </style>
+      </xpath> <!-- Replace ONLY the
+      card template -->
+      <xpath expr="//templates/t[@t-name='card']" position="replace">
+        <t t-name="card">
+          <div class="visa-card"> <!-- Service number -->
+            <div class="name">
+              <strong>Service raqami: </strong>
+              <t t-esc="(record.service_number and record.service_number.value) or ''" />
+            </div> <!--
+            Client name (top) -->
+            <div class="name">
+              <strong>Mijoz ismi: </strong>
+              <t t-esc="(record.partner_id and record.partner_id.value) or ''" />
+            </div> 
+            <!--
+            Phone -->
+            <div>
+              <strong>Telefon: </strong>
+              <t t-esc="(record.phone and record.phone.value) or ''" />
+            </div> 
+            <div>
+              <strong>Visa davlat: </strong>
+              <t t-if="record.visa_country_id and record.visa_country_id.value">
+                <t t-esc="record.visa_country_id.value"/>
+              </t>
+              <t t-else="">
+                <span class="missing-field">Ma'lumot kiritilmagan</span>
+              </t>
+            </div>
+            <!-- Deadline -->
+            <div>
+              <strong>Viza deadline: </strong>
+              <t t-if="record.qachonga_kerak and record.qachonga_kerak.value">
+                <t t-esc="record.qachonga_kerak.value"/>
+              </t>
+              <t t-else="">
+                <span class="missing-field">Ma'lumot kiritilmagan</span>
+              </t>
+            </div>
+            <!--Documents -->
+            <div>
+              <strong>Hujjatlar: </strong> <t
+                t-esc="(record.doc_done_count and record.doc_done_count.value) or 0" /> / <t
+                t-esc="(record.doc_total_count and record.doc_total_count.value) or 0" />
+            </div> 
+
+            <!-- Payment -->
+            <t t-set="paid"  t-value="(record.finance_balance &amp;&amp; (record.finance_balance.raw_value || 0)) || 0"/>
+            <t t-set="total" t-value="(record.expected_revenue &amp;&amp; (record.expected_revenue.raw_value || 0)) || 0"/>
+
+            <t t-set="pay_class"
+              t-value="paid &lt;= 0 ? 'pay-red' : (paid &lt; total ? 'pay-yellow' : 'pay-green')"/>
+
+            <div t-attf-class="payment-line #{pay_class}">
+              <strong>To'lov: </strong>
+              <span class="payment-status"><t t-esc="pay_label"/></span>
+              <t t-esc="(record.finance_balance &amp;&amp; record.finance_balance.value) || 0"/>
+              /
+              <t t-esc="(record.expected_revenue &amp;&amp; record.expected_revenue.value) || 0"/>
+            </div>
+
+            <div>
+              <strong>Yaratilgan vaqti: </strong>
+              <t t-esc="(record.create_date and record.create_date.value) or ''" />
+            </div> 
+
+            <footer class="pt-1">
+              <div class="d-flex align-items-center">
+
+                <!-- LEFT: Activities -->
+                <div class="d-flex align-items-center">
+                  <field name="activity_ids" widget="kanban_activity"/>
+                </div>
+
+                <!-- RIGHT: Users -->
+                <div class="d-flex align-items-center ms-auto">
+                  <field name="user_id" widget="many2one_avatar_user" class="me-1"/>
+                  <t t-if="record.visa_agent_id and record.visa_agent_id.raw_value">
+                    <field name="visa_agent_id" widget="many2one_avatar_user"/>
+                  </t>
+                </div>
+
+              </div>
+            </footer>
+
+          </div>
+        </t>
+      </xpath>
+    </field>
+  </record>
+</odoo>

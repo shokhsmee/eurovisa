@@ -1,0 +1,19 @@
+<odoo>
+  <record id="crm_stage_view_form_eskiz" model="ir.ui.view">
+    <field name="name">crm.stage.view.form.eskiz</field>
+    <field name="model">crm.stage</field>
+    <field name="inherit_id" ref="crm.crm_stage_view_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet/notebook" position="inside">
+        <page string="Eskiz SMS">
+          <group>
+            <field name="eskiz_send_on_enter"/>
+            <field name="eskiz_sms_from" attrs="{'invisible':[('eskiz_send_on_enter','=',False)]}"/>
+            <field name="eskiz_sms_text" attrs="{'invisible':[('eskiz_send_on_enter','=',False)]}"
+                   placeholder="Example: Hi {lead_name}, your request is now in stage: {stage_name}"/>
+          </group>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>

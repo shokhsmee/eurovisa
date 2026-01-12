@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <!-- Pipeline (Opportunities) list -->
+    <record id="view_crm_lead_list_cols_pipeline" model="ir.ui.view">
+      <field name="name">crm.lead.list.replace.cols.pipeline</field>
+      <field name="model">crm.lead</field>
+      <field name="inherit_id" ref="crm.crm_case_tree_view_oppor"/>
+      <field name="priority">99</field>
+      <field name="arch" type="xml">
+        <xpath expr="//list|//tree" position="replace">
+        <list string="Pipeline">
+            <field name="service_number" string="Service Raqami"/>
+            <field name="partner_id" string="Kontakt nomi"/>
+            <field name="phone" string="Telefon Raqami"/>
+            <field name="expected_revenue" string="Ish summasi"/>
+            <field name="finance_balance"/>
+            <field name="visa_country_id" optional="hide"/>
+            <field name="visa_type" optional="hide"/>
+            <field name="visa_agent_id" string="Agent" optional="hide"/>
+            <field name="user_id" string="Ma'sul xodim"/>
+            <field name="stage_id" string="Bosqich"/>
+            <field name="create_date" string="Yaratilgan vaqti" widget="datetime"/>
+          </list>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

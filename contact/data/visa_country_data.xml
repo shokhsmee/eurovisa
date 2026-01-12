@@ -1,0 +1,25 @@
+<odoo noupdate="1">
+    <record id="visa_country_latviya" model="visa.country">
+        <field name="name">Latviya</field>
+        <field name="code">latviya</field>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="visa_country_litva" model="visa.country">
+        <field name="name">Litva</field>
+        <field name="code">litva</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="visa_country_polsha" model="visa.country">
+        <field name="name">Polsha</field>
+        <field name="code">polsha</field>
+        <field name="sequence">30</field>
+    </record>
+
+    <record id="visa_country_germaniya" model="visa.country">
+        <field name="name">Germaniya</field>
+        <field name="code">germaniya</field>
+        <field name="sequence">40</field>
+    </record>
+</odoo>

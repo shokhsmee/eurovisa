@@ -1,0 +1,23 @@
+<odoo>
+  <template id="volna_login_layout" inherit_id="web.login_layout" name="EURO VISA Login Layout">
+    <xpath expr="//t[@t-out='0']" position="replace">
+      <div class="volna-login">
+        <section class="volna-left">
+          <div class="volna-center">
+            <img class="volna-logo-img"
+                 src="/login_viza/static/src/img/evroviza_logo_sc.svg"
+                 alt="EuroVisa"/>
+
+            <div class="volna-subtitle">Boshqaruv tizimi</div>
+
+            <div class="volna-form-wrap">
+              <t t-out="0"/>
+            </div>
+          </div>
+        </section>
+
+        <section class="volna-right"></section>
+      </div>
+    </xpath>
+  </template>
+</odoo>

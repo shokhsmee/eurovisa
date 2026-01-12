@@ -1,0 +1,18 @@
+.o_opportunity_kanban .o_kanban_group_count{
+  opacity: .75;
+  font-size: 12px;
+  font-weight: 600;
+}
+.missing-field {
+  color: #c0392b;      /* softer red */
+  font-weight: 400;    /* normal weight */
+  font-style: italic;  /* optional, reads nicer */
+  opacity: 0.85;
+}
+.payment-line {
+  font-weight: 600;
+  font-size: 13px;
+}
+.payment-line.pay-red    { color: #b42318; }  /* soft red */
+.payment-line.pay-yellow { color: #b25e09; }  /* soft amber */
+.payment-line.pay-green  { color: #067647; }  /* soft green */

@@ -1,0 +1,13 @@
+<odoo>
+    <record id="action_partner_document_types" model="ir.actions.act_window">
+        <field name="name">Document Types</field>
+        <field name="res_model">res.partner.document.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_custom_document_types"
+              name="Document Types"
+              parent="contacts.menu_contacts"
+              action="action_partner_document_types"
+              sequence="90"/>
+</odoo>

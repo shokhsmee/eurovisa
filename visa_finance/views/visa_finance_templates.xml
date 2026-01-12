@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <templates xml:space="preserve">
+
+    <t t-name="visa_finance.VisaFinanceListButtonsRoot">
+      <t t-call="web.ListView.Buttons">
+        <t t-set-slot="custom-buttons">
+          <div class="btn-group ms-2" role="group" aria-label="Finance Stats">
+            <button type="button" 
+                    class="btn btn-outline-success" 
+                    t-on-click="onClickIncome"
+                    title="Kirim bo'yicha CRM leadlarni ko'rish">
+              Kirim: <t t-esc="state.income"/>
+            </button>
+            
+            <button type="button" 
+                    class="btn btn-outline-danger" 
+                    t-on-click="onClickExpense"
+                    title="Chiqim bo'yicha CRM leadlarni ko'rish">
+              Chiqim: <t t-esc="state.expense"/>
+            </button>
+            
+            <button type="button" 
+                    class="btn btn-outline-primary" 
+                    t-on-click="onClickProfit"
+                    title="Foyda bo'yicha CRM leadlarni ko'rish">
+              Foyda: <t t-esc="state.profit"/>
+            </button>
+            
+            <button type="button" 
+                    class="btn btn-outline-info" 
+                    t-on-click="onClickCount"
+                    title="Barcha CRM leadlarni ko'rish">
+              Visa soni: <t t-esc="state.count"/>
+            </button>
+            
+            <button type="button" 
+                    class="btn btn-outline-warning" 
+                    t-on-click="onClickDebt"
+                    title="Qarzli CRM leadlarni ko'rish">
+              Qarz: <t t-esc="state.debt"/>
+            </button>
+          </div>
+        </t-set-slot>
+      </t>
+    </t>
+
+  </templates>
+</odoo>

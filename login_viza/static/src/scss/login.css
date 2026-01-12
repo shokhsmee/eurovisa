@@ -1,0 +1,108 @@
+html, body { height: 100%; }
+body { margin: 0 !important; }
+
+/* FORCE fullscreen regardless of Odoo containers */
+.volna-login{
+  position: fixed;
+  inset: 0;
+  display: flex;
+  background: #fff;
+  z-index: 9999;
+}
+
+/* 50 / 50 split */
+.volna-left,
+.volna-right{
+  flex: 0 0 50%;
+  width: 50%;
+}
+
+/* LEFT SIDE — true center */
+.volna-left{
+  padding: 0;
+  display: flex;
+  align-items: center;     /* horizontal center */
+  justify-content: center; /* vertical center */
+}
+
+/* Container holding logo + form */
+.volna-center{
+  width: 360px;
+}
+
+/* Logo image */
+.volna-logo-img{
+  height: 44px;
+  width: auto;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Subtitle */
+.volna-subtitle{
+  font-size: 16px;
+  color: #111827;
+  margin-bottom: 32px;
+}
+
+/* Form wrapper */
+.volna-form-wrap{
+  width: 100%;
+}
+.volna-left{
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volna-center{
+  width: 360px;
+  margin: 0 auto;
+}
+
+/* Inputs */
+.volna-form-wrap input[type="text"],
+.volna-form-wrap input[type="password"],
+.volna-form-wrap input[type="email"]{
+  width: 100%;
+  height: 42px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 0 12px;
+}
+
+/* Main submit button ONLY */
+.volna-form-wrap button[type="submit"],
+.volna-form-wrap .btn-primary{
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  background: #0aa3a2 !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+/* RIGHT SIDE — image only */
+.volna-right{
+  background: url("/login_viza/static/src/img/hero1.svg") 40% center / cover no-repeat;
+}
+
+/* Remove OAuth completely */
+.o_auth_oauth_providers,
+.o_auth_oauth_buttons{
+  display: none !important;
+}
+
+/* Mobile */
+@media (max-width: 992px){
+  .volna-login{ flex-direction: column; }
+  .volna-left, .volna-right{
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  .volna-right{
+    min-height: 320px;
+  }
+}

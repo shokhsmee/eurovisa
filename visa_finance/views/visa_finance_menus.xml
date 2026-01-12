@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="visa_finance_root_menu" name="Finance" sequence="10" web_icon="visa_finance,static/icon1.svg"
+            groups="visa_finance.group_visa_finance_user,base.group_system"/>
+
+    <menuitem id="visa_finance_menu_records" name="O'tkazmalar"
+                parent="visa_finance_root_menu" action="visa_finance_action" sequence="10"
+                groups="visa_finance.group_visa_finance_user"/>
+
+    <menuitem id="visa_finance_menu_payment_type" name="To'lov turlari"
+                parent="visa_finance_root_menu" action="visa_finance_payment_type_action" sequence="20"
+                groups="visa_finance.group_visa_finance_user"/>
+
+    <menuitem id="visa_finance_menu_payment_method" name="To'lov metodlari"
+                parent="visa_finance_root_menu" action="visa_finance_payment_method_action" sequence="30"
+                groups="visa_finance.group_visa_finance_user"/>
+
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+  <!-- Add record count near the group aggregate (sum) -->
+  <t t-inherit="web.KanbanGroupHeader" t-inherit-mode="extension">
+    <!-- This span exists when a sum_field is active -->
+    <xpath expr="//span[contains(@class,'o_kanban_group_aggregate')]" position="after">
+      <span class="o_kanban_group_count ms-1">
+        (<t t-esc="props.group.count"/>)
+      </span>
+    </xpath>
+  </t>
+
+</templates>
