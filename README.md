@@ -4,13 +4,16 @@ Domain: https://eurovisa.uz
 
 Author: Shohjahon Obruyev
 Stack: Odoo 18/19 Community (Enterprise preferred)
-Purpose: Custom CRM system with integrated IP-telephony, Finance, Telegram Bot, SMS Provider, and Employee Management.
+
+Purpose
+
+Custom CRM system with integrated IP-telephony, Finance, Telegram Bot, SMS Provider, and Employee Management.
 
 Overview
 
 The eurovisa CRM system is a fully integrated business process automation platform built on top of Odoo. It provides end-to-end workflow management for visa agencies and service companies.
 
-Key features include:
+Key Features
 
 Lead and Customer Management
 
@@ -29,13 +32,10 @@ Contact Center Tools
 Authentication Customizations
 
 Core Modules
-
-Below are the primary Odoo add-ons included in this repository:
-
 Module	Description
 crm_apps	Base CRM extensions and adjustments
 visa_agent_crm	Agent lead management, user access, lead assignments
-moizvonki_calls	IP telephony integration via moizvonki API
+moizvonki_calls	IP telephony integration via Moizvonki API
 crm_eskiz_sms	Eskiz SMS provider integration for notifications
 visa_finance	Finance workflow, billing, payment tracking
 contact	Contact and customer extensions
@@ -58,7 +58,7 @@ Call logs from Asterisk/Moizvonki (via moizvonki_calls)
 
 Employee call performance
 
-Click-to-call optional support
+Click-to-call (optional)
 
 Call recordings support (optional)
 
@@ -78,7 +78,7 @@ Agent notification system
 
 Lead updates via bot
 
-Authentication per-user
+Per-user authentication
 
 Finance Module
 
@@ -106,13 +106,13 @@ Users/Agents -> CRM + Bot -> Finance -> SMS -> Telephony -> Employees
 Installation
 Prerequisites
 
-Ubuntu 22.04 recommended
+Ubuntu 22.04 (recommended)
 
 Python 3.11+
 
 PostgreSQL 14+
 
-Odoo 18 or Odoo 19 Community / Enterprise
+Odoo 18 or Odoo 19 (Community or Enterprise)
 
 wkhtmltopdf installed
 
@@ -124,7 +124,7 @@ Install Python Dependencies
 pip install -r requirements.txt
 
 
-(or your virtualenv workflow)
+(Or use your existing virtualenv workflow)
 
 Configure Odoo
 
@@ -133,7 +133,7 @@ Add custom addons path to odoo.conf:
 addons_path = addons,custom-addons
 
 
-Example layout:
+Example folder structure:
 
 odoo/
   odoo.conf
@@ -145,14 +145,16 @@ odoo/
 
 Database Setup
 
-Create database manually or via Odoo web UI.
+Create a database manually or via Odoo web UI.
 
 Configuration Steps
 1. Eskiz SMS Setup
 
-Go to Settings > Technical > Eskiz Settings
+Navigate to:
 
-Enter:
+Settings > Technical > Eskiz Settings
+
+Configure:
 
 Email
 
@@ -162,7 +164,9 @@ Token refresh interval
 
 2. Moizvonki IP Telephony Setup
 
-Go to Settings > Telephony
+Navigate to:
+
+Settings > Telephony
 
 Configure:
 
@@ -172,17 +176,17 @@ Webhook URL
 
 Recording access (optional)
 
-Webhook endpoint example:
+Webhook example:
 
 /moizvonki/webhook
 
 3. Telegram Bot Setup
 
-Configure in:
+Navigate to:
 
 Settings > Integrations > Telegram Bot
 
-Parameters:
+Configure:
 
 Bot Token
 
@@ -192,7 +196,7 @@ Message Templates
 
 4. Finance Module Configuration
 
-Enable in:
+Enable inside:
 
 Finance > Settings
 
@@ -203,38 +207,24 @@ From terminal:
 ./odoo-bin -c odoo.conf
 
 
-or with systemd service.
+Or run via systemd service.
 
-Images and Screenshots (Add later)
+Images and Screenshots
 
 Place screenshots under docs/images/ or similar.
 
-Recommended sections:
-
 Dashboard View
-
-<img width="1905" height="981" alt="image" src="https://github.com/user-attachments/assets/7a185253-a0db-4486-9994-cfd11783607e" />
-
+<img width="1905" height="981" alt="Dashboard" src="https://github.com/user-attachments/assets/7a185253-a0db-4486-9994-cfd11783607e" />
 CRM Lead Pipeline
-
-<img width="1919" height="991" alt="image" src="https://github.com/user-attachments/assets/1160c434-5e3e-4128-a017-153cede66383" />
-
+<img width="1919" height="991" alt="CRM pipeline" src="https://github.com/user-attachments/assets/1160c434-5e3e-4128-a017-153cede66383" />
 Finance Summary
-
-<img width="1919" height="987" alt="image" src="https://github.com/user-attachments/assets/7842650b-b89e-4026-853a-3d2e8fe0785b" />
-
+<img width="1919" height="987" alt="Finance Summary" src="https://github.com/user-attachments/assets/7842650b-b89e-4026-853a-3d2e8fe0785b" />
 Telegram Bot Workflow
+<img width="1179" height="2556" alt="Telegram Bot" src="https://github.com/user-attachments/assets/c0323215-0755-4a51-bb3f-3d0cfbbdfc71" />
 
-<img width="1179" height="2556" alt="image" src="https://github.com/user-attachments/assets/c0323215-0755-4a51-bb3f-3d0cfbbdfc71" />
+Additional images (optional):
 
-Add them like:
-
-<img width="1919" height="988" alt="image" src="https://github.com/user-attachments/assets/38508f0d-9a7e-4200-b072-c0249969a9d0" />
-<img width="1919" height="988" alt="image" src="https://github.com/user-attachments/assets/8a826171-a360-44df-8b63-422494c260e6" />
-<img width="1919" height="991" alt="image" src="https://github.com/user-attachments/assets/16e7d358-40fc-423b-a4b3-7111f36ef6ec" />
-<img width="1919" height="987" alt="image" src="https://github.com/user-attachments/assets/f9dbd062-4d40-4c61-9805-828950572fff" />
-
-
+<img width="1919" height="988" src="https://github.com/user-attachments/assets/38508f0d-9a7e-4200-b072-c0249969a9d0" /> <img width="1919" height="988" src="https://github.com/user-attachments/assets/8a826171-a360-44df-8b63-422494c260e6" /> <img width="1919" height="991" src="https://github.com/user-attachments/assets/16e7d358-40fc-423b-a4b3-7111f36ef6ec" /> <img width="1919" height="987" src="https://github.com/user-attachments/assets/f9dbd062-4d40-4c61-9805-828950572fff" />
 Tech Stack
 Component	Version
 Python	3.11+
@@ -245,17 +235,23 @@ Eskiz SMS API	Yes
 Moizvonki API	Yes
 Deployment Notes
 
-For production:
+Production recommendations:
 
-Use reverse proxy (NGINX)
+Use NGINX reverse proxy
 
-Use SSL (LetsEncrypt recommended)
+Enable HTTPS (Let's Encrypt)
 
-Use workers for scaling
+Scale using Odoo workers
 
-Use PostgreSQL tuning for performance
+Tune PostgreSQL for performance
 
-Use logging for telephony + bot debugging
+Enable logging for:
+
+Telephony
+
+Bot events
+
+Finance operations
 
 Future Improvements (Roadmap)
 
@@ -271,4 +267,4 @@ Multi-company support
 
 License
 
-Proprietary use, internal deployment only unless specified by author.
+Proprietary use. Internal deployment only unless specified by the author.
