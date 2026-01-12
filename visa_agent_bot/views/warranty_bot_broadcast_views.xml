@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- ROOT MENU -->
+        <menuitem id="menu_warranty_bot_root"
+                  name="Ustalar Bot"
+                  sequence="35"
+                  web_icon="warranty_bot,static/bot_icon.svg"/>
+
+        <!-- ACTION -->
+        <record id="action_warranty_bot_broadcast" model="ir.actions.act_window">
+            <field name="name">Broadcast xabarlari</field>
+            <field name="res_model">warranty.bot.broadcast</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Ustalar Telegram bot orqali ustalarga umumiy xabar yuboring.
+                </p>
+            </field>
+        </record>
+
+        <!-- LIST VIEW -->
+        <record id="view_warranty_bot_broadcast_list" model="ir.ui.view">
+            <field name="name">warranty.bot.broadcast.list</field>
+            <field name="model">warranty.bot.broadcast</field>
+            <field name="arch" type="xml">
+                <list string="Broadcast xabarlari">
+                    <field name="name"/>
+                    <field name="target_type"/>
+                    <field name="state"/>
+                    <field name="sent_count"/>
+                    <field name="sent_at"/>
+                    <field name="last_error" optional="hide"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- FORM VIEW -->
+        <record id="view_warranty_bot_broadcast_form" model="ir.ui.view">
+            <field name="name">warranty.bot.broadcast.form</field>
+            <field name="model">warranty.bot.broadcast</field>
+            <field name="arch" type="xml">
+                <form string="Broadcast">
+                    <header>
+                        <button name="action_send_broadcast"
+                                type="object"
+                                string="Yuborish"
+                                class="oe_highlight"
+                                invisible="state == 'sent'"/>
+                        
+                        <button name="action_noop"
+                            type="object"
+                            string="Yuborildi"
+                            class="btn-secondary"
+                            invisible="state != 'sent'"/>
+
+                        <field name="state"
+                               widget="statusbar"
+                               statusbar_visible="draft,sent"/>
+                    </header>
+
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="target_type"/>
+                                <field name="test_employee_id"
+                                    invisible="target_type != 'test_one'"
+                                    string="Ustani tanlang"/>
+                            </group>
+                            <group>
+                                <field name="sent_count" readonly="1"/>
+                                <field name="sent_at" readonly="1"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <field name="body"
+                                   placeholder="Assalomu alaykum, bugungi yangiliklar..."/>
+                        </group>
+
+                        <group string="Fayllar">
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                        </group>
+
+                        <group string="Texnik ma'lumotlar">
+                            <field name="last_error" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- CHILD MENU -->
+        <menuitem id="menu_warranty_bot_broadcast"
+                  name="Xabarlar"
+                  parent="menu_warranty_bot_root"
+                  action="action_warranty_bot_broadcast"
+                  sequence="10"/>
+
+    </data>
+</odoo>
