@@ -38,7 +38,8 @@
 
         <style> .visa-card div { line-height: 1.4; margin: 2px 0; font-size: 14px; } .visa-card
           .name { font-weight: 700; font-size: 16px; } </style>
-      </xpath> <!-- Replace ONLY the
+      </xpath> 
+      <!-- Replace ONLY the
       card template -->
       <xpath expr="//templates/t[@t-name='card']" position="replace">
         <t t-name="card">

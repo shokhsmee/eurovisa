@@ -15,9 +15,9 @@
             <button class="btn btn-outline-danger btn-sm text-nowrap" t-on-click="onClickDebt">
                 Qarz: <t t-esc="state.debt"/>
             </button>
-            <button class="btn btn-outline-secondary btn-sm text-nowrap" t-on-click="onClickCount">
+            <!-- <button class="btn btn-outline-secondary btn-sm text-nowrap" t-on-click="onClickCount">
                 Visa soni: <t t-esc="state.count"/>
-            </button>
+            </button> -->
         </div>
     </t>
 </t>

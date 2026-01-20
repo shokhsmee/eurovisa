@@ -6,8 +6,9 @@
     </record>
 
     <menuitem id="menu_custom_document_types"
-              name="Document Types"
-              parent="contacts.menu_contacts"
-              action="action_partner_document_types"
-              sequence="90"/>
+            name="Document Types"
+            parent="contacts.menu_contacts"
+            action="action_partner_document_types"
+            groups="base.group_user"
+            sequence="90"/>
 </odoo>
